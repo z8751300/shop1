@@ -1,0 +1,56 @@
+$green = #02a774
+$yellow = #F5A100
+$bc = #e4e4e4
+
+
+
+bottom-border-1px($color)
+  position: relative
+  &:after
+    position: absolute
+    content: ' '
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: 1px solid $color
+
+
+top-border-1px($color)
+  position: relative
+  &:before
+    position: absolute
+    content: ' '
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+
+
+
+@media only screen and (-webkit-device-pixel-ratio: 2),(device-pixel-ratio: 2)
+  .border-1px
+    &::before
+      transform: scaleY(0.5)
+    &::after
+      transform: scaleY(0.5)
+
+@media only screen and (-webkit-device-pixel-ratio: 3),(device-pixel-ratio: 3)
+  .border-1px
+    &::before
+      transform: scaleY(0.33333333)
+    &::after
+      transform: scaleY(0.33333333)
+
+
+bg-image($url)
+  background-image: url($url + '@2x.png')
+  background-repeat: no-repeat
+  @media only screen and (-webkit-device-pixel-ratio: 3),(device-pixel-ratio: 3)
+    background-image: url($url + '@3x.png')
+    background-repeat: no-repeat
+
+clear-fix()
+  &::after
+    content: ''
+    display: block
+    clear: both
