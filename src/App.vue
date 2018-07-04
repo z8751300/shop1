@@ -10,8 +10,9 @@
   import * as api from './api/index'
 export default {
   name: 'App',
-  mounted() {
-
+  async mounted() {
+    const {data, status} = await api.getList()
+    console.log(status)
   },
   components: {
     FooterGuide,
