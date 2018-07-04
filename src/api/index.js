@@ -1,8 +1,16 @@
 import ajax from './ajax'
 
 
-
 export const getList = () => {
-  return ajax('/goods')
+  const result = ajax('/goods')
+  return result
+  
+}
+export const getCategory = () => {
+  return ajax('/categorys')
+  
+}
+export const getshops = () => {
+  return ajax('/shops')
   
 }

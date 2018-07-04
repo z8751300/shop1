@@ -13,6 +13,9 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
+    {{counter}} <br>
+    <button @click="add">add</button> <br>
+    <button @click="minus">minus</button>
   </div>
 </template>
 
@@ -20,13 +23,21 @@
   import HeaderTop from '../../components/HeaderTop.vue'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
+  import {mapState, mapGetters} from 'vuex'
 export default {
   data(){
     return {
       title: 'msite msite msite msite msite msite msite'
     }
   },
-  methods: {},
+  methods: {
+    add() {
+      this.$store.dispatch('add', 3)
+    },
+    minus() {
+      this.$store.dispatch('minus', 1)
+    }
+  },
   mounted() {
     var mySwiper = new Swiper ('.swiper-container', {
       direction: 'horizontal',
@@ -35,6 +46,11 @@ export default {
         el: '.swiper-pagination',
       }
     })
+
+  },
+  computed: {
+    ...mapState(['count']),
+    ...mapGetters(['counter']),
   },
   components: {
     HeaderTop,
